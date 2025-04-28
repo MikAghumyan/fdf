@@ -1,0 +1,7 @@
+[submodule "gnl"]
+	path = gnl
+	url = git@github.com:MikAghumyan/get_next_line.git
+	branch = push_swap
+[submodule "libft"]
+	path = libft
+	url = git@github.com:MikAghumyan/libft.git
