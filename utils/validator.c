@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 18:41:53 by maghumya          #+#    #+#             */
-/*   Updated: 2025/04/29 15:47:40 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/04/29 19:14:52 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ ssize_t	validate_file(t_data *data, char *file_path)
 
 	fd = open(file_path, O_RDONLY);
 	if (fd < 0)
-		handle_error("error opening file", NULL);
+		handle_error("error opening file", NULL, -1);
 	line = get_next_line(fd);
 	if (!line)
 		return (close(fd), -1);
