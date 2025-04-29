@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/04/28 20:34:17 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:17:18 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@
 
 typedef struct s_data
 {
-	int	**matrix;
-	int	row_len;
-	int	col_len;
-}		t_data;
+	int		**matrix;
+	ssize_t	row_len;
+	ssize_t	col_len;
+}			t_data;
 
-void	handle_error(char *err_msg, t_data *data);
+void		handle_error(char *err_msg, t_data *data);
+
+ssize_t		validate_file(t_data *data, char *file_path);
 
 #endif
