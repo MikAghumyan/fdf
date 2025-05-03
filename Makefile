@@ -8,6 +8,8 @@ SRC =	main.c \
 		utils/handlers.c \
 		utils/parser.c \
 		utils/validator.c \
+		utils/initializer.c \
+		utils/event_hooks.c
 
 OBJS = $(SRC:.c=.o)
 LIBFT= libft/libft.a

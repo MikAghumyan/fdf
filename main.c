@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 18:19:37 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/03 18:30:07 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/03 20:22:22 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 int	main(int argc, char **argv)
 {
-	t_data	data;
-	int		i;
-	int		j;
-	void	*mlx;
-	void	*win;
+	t_data			data;
+	t_image_data	img_data;
+	int				i;
+	int				j;
 
 	if (argc != 2)
 	{
@@ -26,14 +25,9 @@ int	main(int argc, char **argv)
 			2);
 		return (1);
 	}
-	data.matrix = NULL;
-	data.col_len = 0;
-	data.row_len = 0;
+	initialize_data(&data);
 	if (validate_file(&data, argv[1]) <= 0)
-	{
-		ft_putstr_fd("fdf: invalid map \n", 2);
-		return (1);
-	}
+		return (ft_putstr_fd("fdf: invalid map \n", 2), 1);
 	printf("row_len: %zd \n", data.row_len);
 	printf("col_len: %zd \n", data.col_len);
 	make_matrix(&data, argv[1]);
@@ -46,9 +40,7 @@ int	main(int argc, char **argv)
 		printf("\n");
 		i++;
 	}
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 800, 600, "FDF Test");
-	mlx_loop(mlx);
+	initialize_window(&data, &img_data);
 	free_matrix((void **)data.matrix);
 	return (0);
 }
