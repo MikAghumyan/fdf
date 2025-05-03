@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 18:19:37 by maghumya          #+#    #+#             */
-/*   Updated: 2025/04/29 19:10:49 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/03 18:30:07 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 int	main(int argc, char **argv)
 {
-	t_data data;
+	t_data	data;
+	int		i;
+	int		j;
+	void	*mlx;
+	void	*win;
 
 	if (argc != 2)
 	{
@@ -33,15 +37,18 @@ int	main(int argc, char **argv)
 	printf("row_len: %zd \n", data.row_len);
 	printf("col_len: %zd \n", data.col_len);
 	make_matrix(&data, argv[1]);
-	int i = 0;
+	i = 0;
 	while (data.matrix[i])
 	{
-		int j = 0;
+		j = 0;
 		while (j < data.row_len)
 			printf("%d ", data.matrix[i][j++]);
 		printf("\n");
 		i++;
 	}
+	mlx = mlx_init();
+	win = mlx_new_window(mlx, 800, 600, "FDF Test");
+	mlx_loop(mlx);
 	free_matrix((void **)data.matrix);
 	return (0);
 }

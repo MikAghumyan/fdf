@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/04/29 18:34:25 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/03 18:15:30 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../gnl/get_next_line.h"
 # include "../libft/libft.h"
+# include "../mlx/mlx.h"
 # include <errno.h>
 # include <fcntl.h>
 # include <stdio.h>
