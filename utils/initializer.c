@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 18:50:21 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/03 21:48:04 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/03 21:51:30 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,7 @@ void	free_window(t_data *data)
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 	}
-	ft_printf("free mlx: %p %p %p\n", data->img, data->win, data->mlx);
+	data->img = NULL;
+	data->win = NULL;
+	data->mlx = NULL;
 }
