@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/03 21:24:06 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/03 21:43:09 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../gnl/get_next_line.h"
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
+# include <X11/X.h>
 # include <errno.h>
 # include <fcntl.h>
 # include <stdio.h>
@@ -47,6 +48,7 @@ void		handle_exit(t_data *data, int fd);
 ssize_t		validate_file(t_data *data, char *file_path);
 
 int			key_hook(int keycode, t_data *data);
+int			win_close_hook(t_data *data);
 
 void		initialize_data(t_data *data);
 void		initialize_window(t_data *data);

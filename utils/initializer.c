@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 18:50:21 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/03 21:33:40 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/03 21:48:04 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	initialize_window(t_data *data)
 	if (!data->mlx)
 		handle_error("window creation failed", data, -1);
 	mlx_key_hook(data->win, key_hook, data);
+	mlx_hook(data->win, DestroyNotify, StructureNotifyMask, win_close_hook,
+		data);
 	data->img = mlx_new_image(data->mlx, WINDOW_X, WINDOW_Y);
 	if (!data->img)
 		handle_error("image creation failed", data, -1);
