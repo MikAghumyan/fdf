@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 18:19:37 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/03 20:22:22 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/03 21:22:44 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 int	main(int argc, char **argv)
 {
-	t_data			data;
-	t_image_data	img_data;
-	int				i;
-	int				j;
+	t_data	data;
+	int		i;
+	int		j;
 
 	if (argc != 2)
 	{
@@ -40,7 +39,7 @@ int	main(int argc, char **argv)
 		printf("\n");
 		i++;
 	}
-	initialize_window(&data, &img_data);
+	initialize_window(&data);
 	free_matrix((void **)data.matrix);
 	return (0);
 }

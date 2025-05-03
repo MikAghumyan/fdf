@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/03 20:21:28 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/03 21:24:06 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,28 +31,26 @@ typedef struct s_data
 	int		**matrix;
 	ssize_t	row_len;
 	ssize_t	col_len;
+
 	void	*mlx;
 	void	*win;
-}			t_data;
-
-typedef struct s_image_data
-{
 	void	*img;
-	char	*addr;
+	char	*img_addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}			t_image_data;
+}			t_data;
 
 void		handle_error(char *err_msg, t_data *data, int fd);
+void		handle_exit(t_data *data, int fd);
 
 ssize_t		validate_file(t_data *data, char *file_path);
 
 int			key_hook(int keycode, t_data *data);
 
 void		initialize_data(t_data *data);
-void		initialize_window(t_data *data, t_image_data *img);
-void		free_window(t_data *data, t_image_data *img);
+void		initialize_window(t_data *data);
+void		free_window(t_data *data);
 
 void		free_matrix(void **matrix);
 ssize_t		fill_line(t_data *data, int fd, int *row);
