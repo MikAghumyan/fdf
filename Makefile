@@ -9,7 +9,8 @@ SRC =	main.c \
 		utils/parser.c \
 		utils/validator.c \
 		utils/initializer.c \
-		utils/event_hooks.c
+		utils/event_hooks.c \
+		utils/drawer.c
 
 OBJS = $(SRC:.c=.o)
 LIBFT= libft/libft.a

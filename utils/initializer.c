@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 18:50:21 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/03 21:51:30 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/04 17:20:10 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ void	initialize_window(t_data *data)
 		handle_error("image creation failed", data, -1);
 	data->img_addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,
 			&data->line_length, &data->endian);
-	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	mlx_loop(data->mlx);
 }
 
 void	free_window(t_data *data)

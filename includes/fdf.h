@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/03 21:43:09 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/04 17:17:45 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int			win_close_hook(t_data *data);
 void		initialize_data(t_data *data);
 void		initialize_window(t_data *data);
 void		free_window(t_data *data);
+
+void		pixel_put_image(t_data *data, int x, int y, int color);
 
 void		free_matrix(void **matrix);
 ssize_t		fill_line(t_data *data, int fd, int *row);
