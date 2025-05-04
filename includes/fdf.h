@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/04 17:17:45 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/04 18:10:31 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ typedef struct s_data
 	int		endian;
 }			t_data;
 
+typedef struct s_coordinate
+{
+	int		x;
+	int		y;
+}			t_coordinate;
+
 void		handle_error(char *err_msg, t_data *data, int fd);
 void		handle_exit(t_data *data, int fd);
 
@@ -55,6 +61,7 @@ void		initialize_window(t_data *data);
 void		free_window(t_data *data);
 
 void		pixel_put_image(t_data *data, int x, int y, int color);
+void		draw_line(t_data *data, t_coordinate p0, t_coordinate p1);
 
 void		free_matrix(void **matrix);
 ssize_t		fill_line(t_data *data, int fd, int *row);
