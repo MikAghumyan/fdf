@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 18:19:37 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/04 17:21:00 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:28:35 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 int	main(int argc, char **argv)
 {
-	t_data	data;
-	int		i;
-	int		j;
+	t_data			data;
+	t_coordinate	p0;
+	t_coordinate	p1;
+	int				i;
+	int				j;
 
 	if (argc != 2)
 	{
@@ -40,6 +42,11 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	initialize_window(&data);
+	p0.x = 500;
+	p0.y = 500;
+	p1.x = 100;
+	p1.y = 100;
+	draw_line(&data, p0, p1);
 	mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0);
 	mlx_loop(data.mlx);
 	free_matrix((void **)data.matrix);
