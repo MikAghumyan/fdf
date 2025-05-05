@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/04 18:10:31 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/05 17:05:03 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <X11/X.h>
 # include <errno.h>
 # include <fcntl.h>
+# include <math.h>
 # include <stdio.h>
 # include <string.h>
 
@@ -47,6 +48,16 @@ typedef struct s_coordinate
 	int		x;
 	int		y;
 }			t_coordinate;
+
+typedef struct s_line
+{
+	int		dx;
+	int		dy;
+	double	p;
+	int		t;
+}			t_line;
+
+void		swap_nums(int *a, int *b);
 
 void		handle_error(char *err_msg, t_data *data, int fd);
 void		handle_exit(t_data *data, int fd);
