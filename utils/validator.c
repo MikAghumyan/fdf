@@ -6,11 +6,30 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 18:41:53 by maghumya          #+#    #+#             */
-/*   Updated: 2025/04/29 19:14:52 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/07 17:01:27 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+static ssize_t	check_hex(char **s)
+{
+	if (!s || !*s)
+		return (-1);
+	if ((*s)[0] == ',' && (*s)[1] == '0' && (*s)[2] == 'x')
+	{
+		*s += 3;
+		while (**s && **s != ' ' && **s != '\n')
+		{
+			if (!(**s >= '0' && **s <= '9') && !(**s >= 'a' && **s <= 'f')
+				&& !(**s >= 'A' && **s <= 'F'))
+				return (-1);
+			(*s)++;
+		}
+		return (0);
+	}
+	return (-1);
+}
 
 static ssize_t	count_points(char *s)
 {
@@ -28,8 +47,12 @@ static ssize_t	count_points(char *s)
 		while (*s && (*s != ' ' && *s != '\n'))
 		{
 			if (!(*s >= '0' && *s <= '9'))
-				return (-1);
-			s++;
+			{
+				if (check_hex(&s) == -1)
+					return (-1);
+			}
+			else
+				s++;
 		}
 	}
 	return (count);
