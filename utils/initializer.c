@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 18:50:21 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/04 17:20:10 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/07 17:17:08 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	initialize_data(t_data *data)
 {
 	data->matrix = NULL;
+	data->colors = NULL;
 	data->col_len = 0;
 	data->row_len = 0;
 	data->img = NULL;

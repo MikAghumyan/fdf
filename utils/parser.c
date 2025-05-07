@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:47:37 by maghumya          #+#    #+#             */
-/*   Updated: 2025/04/29 19:16:03 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/07 18:28:51 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ void	free_matrix(void **matrix)
 	matrix = NULL;
 }
 
-ssize_t	fill_line(t_data *data, int fd, int *row)
+ssize_t	fill_line(t_data *data, int fd, int row_i)
 {
 	char	*line;
 	char	**nbr_strs;
+	char	**point_data;
 	ssize_t	i;
 
 	line = get_next_line(fd);
@@ -44,8 +45,15 @@ ssize_t	fill_line(t_data *data, int fd, int *row)
 	i = 0;
 	while (i < data->row_len && nbr_strs[i])
 	{
-		row[i] = ft_atoi(nbr_strs[i]);
-		i++;
+		point_data = ft_split(nbr_strs[i], ',');
+		if (!point_data)
+			return (free(line), free_matrix((void **)nbr_strs), -1);
+		data->matrix[row_i][i] = ft_atoi(point_data[0]);
+		if (point_data[1])
+			data->colors[row_i][i] = ft_atoi_base(point_data[1] + 2, 16);
+		else
+			data->colors[row_i][i] = 0x00AB78;
+		(free_matrix((void **)point_data), i++);
 	}
 	return (free(line), free_matrix((void **)nbr_strs), 0);
 }
@@ -59,15 +67,17 @@ void	make_matrix(t_data *data, char *file_path)
 	if (fd < 0)
 		handle_error("error opening file", data, -1);
 	data->matrix = (int **)ft_calloc(sizeof(int *), data->col_len + 1);
-	if (!data->matrix)
+	data->colors = (int **)ft_calloc(sizeof(int *), data->col_len + 1);
+	if (!data->matrix || !data->colors)
 		handle_error("memory allocation error", data, fd);
 	i = 0;
 	while (i < data->col_len)
 	{
 		data->matrix[i] = (int *)ft_calloc(sizeof(int), data->row_len);
-		if (!data->matrix[i])
+		data->colors[i] = (int *)ft_calloc(sizeof(int), data->row_len);
+		if (!data->colors || !data->matrix[i])
 			handle_error("memory allocation error", data, fd);
-		if (fill_line(data, fd, data->matrix[i]))
+		if (fill_line(data, fd, i))
 			handle_error("memory allocation error", data, fd);
 		i++;
 	}

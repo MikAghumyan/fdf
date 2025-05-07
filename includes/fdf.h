@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/07 12:59:42 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/07 17:37:49 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 typedef struct s_data
 {
 	int			**matrix;
+	int			**colors;
 	ssize_t		row_len;
 	ssize_t		col_len;
 
@@ -77,7 +78,7 @@ void			draw_line(t_data *data, t_coordinate_2d p0, t_coordinate_2d p1);
 void			draw_mesh(t_data *data);
 
 void			free_matrix(void **matrix);
-ssize_t			fill_line(t_data *data, int fd, int *row);
+ssize_t			fill_line(t_data *data, int fd, int row_i);
 void			make_matrix(t_data *data, char *file_path);
 
 #endif

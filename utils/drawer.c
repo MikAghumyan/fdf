@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 17:00:58 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/07 13:40:06 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/07 18:44:23 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	draw_line_h(t_data *data, t_coordinate_2d p0, t_line line)
 		line.p = 2 * line.dy - line.dx;
 		while (i <= line.dx)
 		{
-			pixel_put_image(data, p0.x + i++, line.t, 0xffffff);
+			pixel_put_image(data, p0.x + i++, line.t, 0x00AB78);
 			if (line.p >= 0)
 			{
 				line.t += dir;
@@ -128,6 +128,7 @@ void	draw_mesh(t_data *data)
 						+ 1][j]));
 			j++;
 		}
+		printf("\n");
 		i++;
 	}
 }
