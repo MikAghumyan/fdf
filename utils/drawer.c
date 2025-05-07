@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 17:00:58 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/07 19:52:48 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/07 20:00:10 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void	draw_mesh(t_data *data)
 						data->matrix[i + 1][j]));
 			j++;
 		}
-		printf("\n");
 		i++;
 	}
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 }

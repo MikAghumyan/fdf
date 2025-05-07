@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/07 19:51:46 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/07 20:07:24 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define WINDOW_Y 1080
 
 # define ESC_KEY 65307
+# define MINUS_KEY 65453
+# define PLUS_KEY 65451
 
 typedef struct s_data
 {
