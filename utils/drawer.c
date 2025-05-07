@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 17:00:58 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/07 18:44:23 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/07 19:52:48 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	draw_line_h(t_data *data, t_coordinate_2d p0, t_line line)
 		line.p = 2 * line.dy - line.dx;
 		while (i <= line.dx)
 		{
-			pixel_put_image(data, p0.x + i++, line.t, 0x00AB78);
+			pixel_put_image(data, p0.x + i++, line.t, p0.color);
 			if (line.p >= 0)
 			{
 				line.t += dir;
@@ -68,7 +68,7 @@ static void	draw_line_v(t_data *data, t_coordinate_2d p0, t_line line)
 		line.p = 2 * line.dx - line.dy;
 		while (i <= line.dy)
 		{
-			pixel_put_image(data, line.t, p0.y + i++, 0xffffff);
+			pixel_put_image(data, line.t, p0.y + i++, p0.color);
 			if (line.p >= 0)
 			{
 				line.t += dir;
@@ -119,13 +119,13 @@ void	draw_mesh(t_data *data)
 		j = 0;
 		while (j < data->row_len)
 		{
-			pos1 = get_isometric(j, i, data->matrix[i][j]);
+			pos1 = get_isometric(data, j, i, data->matrix[i][j]);
 			if (j + 1 < data->row_len)
-				draw_line(data, pos1, get_isometric(j + 1, i, data->matrix[i][j
-						+ 1]));
+				draw_line(data, pos1, get_isometric(data, j + 1, i,
+						data->matrix[i][j + 1]));
 			if (i + 1 < data->col_len)
-				draw_line(data, pos1, get_isometric(j, i + 1, data->matrix[i
-						+ 1][j]));
+				draw_line(data, pos1, get_isometric(data, j, i + 1,
+						data->matrix[i + 1][j]));
 			j++;
 		}
 		printf("\n");

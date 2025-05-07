@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/07 17:37:49 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/07 19:51:46 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_data
 	int			**colors;
 	ssize_t		row_len;
 	ssize_t		col_len;
+	int			zoom;
 
 	void		*mlx;
 	void		*win;
@@ -48,6 +49,7 @@ typedef struct s_coordinate_2d
 {
 	int			x;
 	int			y;
+	int			color;
 }				t_coordinate_2d;
 
 typedef struct s_line
@@ -59,7 +61,7 @@ typedef struct s_line
 }				t_line;
 
 void			swap_nums(int *a, int *b);
-t_coordinate_2d	get_isometric(int x, int y, int z);
+t_coordinate_2d	get_isometric(t_data *data, int x, int y, int z);
 
 void			handle_error(char *err_msg, t_data *data, int fd);
 void			handle_exit(t_data *data, int fd);
