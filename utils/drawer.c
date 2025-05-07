@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 17:00:58 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/07 12:56:58 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:40:06 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	pixel_put_image(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
+	if (x < 0 || x > WINDOW_X || y < 0 || y > WINDOW_Y)
+		return ;
 	dst = data->img_addr + (y * data->line_length + x * (data->bits_per_pixel
 				/ 8));
 	*(unsigned int *)dst = color;
@@ -109,7 +111,7 @@ void	draw_mesh(t_data *data)
 {
 	int				i;
 	int				j;
-	t_coordinate_2d	pos;
+	t_coordinate_2d	pos1;
 
 	i = 0;
 	while (data->matrix[i])
@@ -117,11 +119,15 @@ void	draw_mesh(t_data *data)
 		j = 0;
 		while (j < data->row_len)
 		{
-			pos = get_isometric(j, i, data->matrix[i][j]);
-			printf("%d %d\t", pos.x, pos.y);
+			pos1 = get_isometric(j, i, data->matrix[i][j]);
+			if (j + 1 < data->row_len)
+				draw_line(data, pos1, get_isometric(j + 1, i, data->matrix[i][j
+						+ 1]));
+			if (i + 1 < data->col_len)
+				draw_line(data, pos1, get_isometric(j, i + 1, data->matrix[i
+						+ 1][j]));
 			j++;
 		}
-		printf("\n");
 		i++;
 	}
 }
