@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 17:00:58 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/05 17:14:50 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:56:58 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,11 @@ void	pixel_put_image(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-static void	draw_line_h(t_data *data, t_coordinate p0, t_coordinate p1)
+static void	draw_line_h(t_data *data, t_coordinate_2d p0, t_line line)
 {
-	t_line	line;
-	int		i;
-	int		dir;
+	int	i;
+	int	dir;
 
-	if (p0.x > p1.x)
-	{
-		swap_nums(&p0.x, &p1.x);
-		swap_nums(&p0.y, &p1.y);
-	}
-	line.dx = p1.x - p0.x;
-	line.dy = p1.y - p0.y;
 	if (line.dy < 0)
 		dir = -1;
 	else
@@ -57,19 +49,11 @@ static void	draw_line_h(t_data *data, t_coordinate p0, t_coordinate p1)
 	}
 }
 
-static void	draw_line_v(t_data *data, t_coordinate p0, t_coordinate p1)
+static void	draw_line_v(t_data *data, t_coordinate_2d p0, t_line line)
 {
-	t_line	line;
-	int		i;
-	int		dir;
+	int	i;
+	int	dir;
 
-	if (p0.y > p1.y)
-	{
-		swap_nums(&p0.x, &p1.x);
-		swap_nums(&p0.y, &p1.y);
-	}
-	line.dx = p1.x - p0.x;
-	line.dy = p1.y - p0.y;
 	if (line.dx < 0)
 		dir = -1;
 	else
@@ -93,10 +77,51 @@ static void	draw_line_v(t_data *data, t_coordinate p0, t_coordinate p1)
 	}
 }
 
-void	draw_line(t_data *data, t_coordinate p0, t_coordinate p1)
+void	draw_line(t_data *data, t_coordinate_2d p0, t_coordinate_2d p1)
 {
+	t_line	line;
+
 	if (abs(p1.x - p0.x) > abs(p1.y - p0.y))
-		draw_line_h(data, p0, p1);
+	{
+		if (p0.x > p1.x)
+		{
+			swap_nums(&p0.x, &p1.x);
+			swap_nums(&p0.y, &p1.y);
+		}
+		line.dx = p1.x - p0.x;
+		line.dy = p1.y - p0.y;
+		draw_line_h(data, p0, line);
+	}
 	else
-		draw_line_v(data, p0, p1);
+	{
+		if (p0.y > p1.y)
+		{
+			swap_nums(&p0.x, &p1.x);
+			swap_nums(&p0.y, &p1.y);
+		}
+		line.dx = p1.x - p0.x;
+		line.dy = p1.y - p0.y;
+		draw_line_v(data, p0, line);
+	}
+}
+
+void	draw_mesh(t_data *data)
+{
+	int				i;
+	int				j;
+	t_coordinate_2d	pos;
+
+	i = 0;
+	while (data->matrix[i])
+	{
+		j = 0;
+		while (j < data->row_len)
+		{
+			pos = get_isometric(j, i, data->matrix[i][j]);
+			printf("%d %d\t", pos.x, pos.y);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
 }
