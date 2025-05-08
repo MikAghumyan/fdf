@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 18:50:21 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/07 19:54:05 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/08 13:00:05 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@ void	initialize_data(t_data *data)
 	data->mlx = NULL;
 }
 
+void	initialize_image(t_data *data)
+{
+	if (data->img)
+		mlx_destroy_image(data->mlx, data->img);
+	data->img = mlx_new_image(data->mlx, WINDOW_X, WINDOW_Y);
+	if (!data->img)
+		handle_error("image creation failed", data, -1);
+	data->img_addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,
+			&data->line_length, &data->endian);
+	draw_mesh(data);
+}
+
 void	initialize_window(t_data *data)
 {
 	data->mlx = mlx_init();
@@ -36,11 +48,7 @@ void	initialize_window(t_data *data)
 	mlx_key_hook(data->win, key_hook, data);
 	mlx_hook(data->win, DestroyNotify, StructureNotifyMask, win_close_hook,
 		data);
-	data->img = mlx_new_image(data->mlx, WINDOW_X, WINDOW_Y);
-	if (!data->img)
-		handle_error("image creation failed", data, -1);
-	data->img_addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,
-			&data->line_length, &data->endian);
+	initialize_image(data);
 }
 
 void	free_window(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/07 20:07:24 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/08 12:57:38 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int				key_hook(int keycode, t_data *data);
 int				win_close_hook(t_data *data);
 
 void			initialize_data(t_data *data);
+
+void			initialize_image(t_data *data);
 void			initialize_window(t_data *data);
 void			free_window(t_data *data);
 

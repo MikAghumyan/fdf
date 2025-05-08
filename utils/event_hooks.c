@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:15:06 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/07 20:09:28 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/08 13:00:25 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,12 @@ int	key_hook(int keycode, t_data *data)
 	if (keycode == PLUS_KEY)
 	{
 		data->zoom += 5;
-		mlx_destroy_image(data->mlx, data->img);
-		data->img = mlx_new_image(data->mlx, WINDOW_X, WINDOW_Y);
-		if (!data->img)
-			handle_error("image creation failed", data, -1);
-		data->img_addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,
-				&data->line_length, &data->endian);
-		draw_mesh(data);
+		initialize_image(data);
 	}
 	if (keycode == MINUS_KEY)
 	{
 		data->zoom -= 5;
-		mlx_destroy_image(data->mlx, data->img);
-		data->img = mlx_new_image(data->mlx, WINDOW_X, WINDOW_Y);
-		if (!data->img)
-			handle_error("image creation failed", data, -1);
-		data->img_addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,
-				&data->line_length, &data->endian);
-		draw_mesh(data);
+		initialize_image(data);
 	}
 	return (0);
 }
