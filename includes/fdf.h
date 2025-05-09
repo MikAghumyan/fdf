@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/09 17:36:59 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/09 19:38:47 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,17 @@ typedef struct s_line
 	double			p;
 }					t_line;
 
+typedef struct s_rgb
+{
+	int				red;
+	int				green;
+	int				blue;
+}					t_rgb;
+
 void				swap_line(t_line *line);
 t_coordinate_2d		get_isometric(t_data *data, int x, int y, int z);
+float				get_line_ratio(t_line *line);
+int					get_color(t_line *line);
 
 void				handle_error(char *err_msg, t_data *data, int fd);
 void				handle_exit(t_data *data, int fd);
