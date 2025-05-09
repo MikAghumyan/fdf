@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 16:18:09 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/09 20:05:54 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/09 20:35:31 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	swap_line(t_line *line)
 {
-	t_coordinate_2d	tmp;
+	t_point	tmp;
 
 	tmp = line->p0;
 	line->p0 = line->p1;
 	line->p1 = tmp;
 }
 
-t_coordinate_2d	get_isometric(t_data *data, int x, int y, int z)
+t_point	get_isometric(t_data *data, int x, int y, int z)
 {
-	t_coordinate_2d	pos;
+	t_point	pos;
 
 	pos.x = ((x - y) * cos(0.523599)) * data->zoom + data->position_x;
 	pos.y = ((x + y) * sin(0.523599) - z) * data->zoom + data->position_y;
