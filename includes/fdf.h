@@ -58,10 +58,11 @@ typedef struct s_line
 {
 	t_coordinate_2d	p0;
 	t_coordinate_2d	p1;
+	t_coordinate_2d	m;
 	int				dx;
 	int				dy;
+	int				dir;
 	double			p;
-	int				t;
 }					t_line;
 
 void				swap_line(t_line *line);

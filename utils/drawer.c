@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 17:00:58 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/09 17:33:18 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/09 19:13:19 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,18 @@ void	pixel_put_image(t_data *data, int x, int y, int color)
 static void	draw_line_h(t_data *data, t_line *line)
 {
 	int	i;
-	int	dir;
 
-	if (line->dy < 0)
-		dir = -1;
-	else
-		dir = 1;
-	line->dy *= dir;
 	if (line->dx)
 	{
-		line->t = line->p0.y;
+		line->m.y = line->p0.y;
 		i = 0;
 		line->p = 2 * line->dy - line->dx;
 		while (i <= line->dx)
 		{
-			pixel_put_image(data, line->p0.x + i++, line->t, line->p0.color);
+			pixel_put_image(data, line->p0.x + i++, line->m.y, line->p0.color);
 			if (line->p >= 0)
 			{
-				line->t += dir;
+				line->m.y += line->dir;
 				line->p -= 2 * line->dx;
 			}
 			line->p += 2 * line->dy;
@@ -54,24 +48,18 @@ static void	draw_line_h(t_data *data, t_line *line)
 static void	draw_line_v(t_data *data, t_line *line)
 {
 	int	i;
-	int	dir;
 
-	if (line->dx < 0)
-		dir = -1;
-	else
-		dir = 1;
-	line->dx *= dir;
 	if (line->dy)
 	{
-		line->t = line->p0.x;
+		line->m.x = line->p0.x;
 		i = 0;
 		line->p = 2 * line->dx - line->dy;
 		while (i <= line->dy)
 		{
-			pixel_put_image(data, line->t, line->p0.y + i++, line->p0.color);
+			pixel_put_image(data, line->m.x, line->p0.y + i++, line->p0.color);
 			if (line->p >= 0)
 			{
-				line->t += dir;
+				line->m.x += line->dir;
 				line->p -= 2 * line->dy;
 			}
 			line->p += 2 * line->dx;
@@ -87,6 +75,8 @@ void	draw_line(t_data *data, t_line line)
 			swap_line(&line);
 		line.dx = line.p1.x - line.p0.x;
 		line.dy = line.p1.y - line.p0.y;
+		line.dir = (line.dy >> 31) | 1;
+		line.dy *= line.dir;
 		draw_line_h(data, &line);
 	}
 	else
@@ -95,6 +85,8 @@ void	draw_line(t_data *data, t_line line)
 			swap_line(&line);
 		line.dx = line.p1.x - line.p0.x;
 		line.dy = line.p1.y - line.p0.y;
+		line.dir = (line.dx >> 31) | 1;
+		line.dx *= line.dir;
 		draw_line_v(data, &line);
 	}
 }
