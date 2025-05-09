@@ -6,17 +6,19 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 16:18:09 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/08 20:39:32 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/09 17:38:55 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	swap_nums(int *a, int *b)
+void	swap_line(t_line *line)
 {
-	*a = *a ^ *b;
-	*b = *a ^ *b;
-	*a = *a ^ *b;
+	t_coordinate_2d	tmp;
+
+	tmp = line->p0;
+	line->p0 = line->p1;
+	line->p1 = tmp;
 }
 
 t_coordinate_2d	get_isometric(t_data *data, int x, int y, int z)

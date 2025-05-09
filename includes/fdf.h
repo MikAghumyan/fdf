@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/08 21:18:57 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/09 17:36:59 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct s_line
 	int				t;
 }					t_line;
 
-void				swap_nums(int *a, int *b);
+void				swap_line(t_line *line);
 t_coordinate_2d		get_isometric(t_data *data, int x, int y, int z);
 
 void				handle_error(char *err_msg, t_data *data, int fd);

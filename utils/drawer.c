@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 17:00:58 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/08 21:19:28 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/09 17:33:18 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,7 @@ void	draw_line(t_data *data, t_line line)
 	if (abs(line.p1.x - line.p0.x) > abs(line.p1.y - line.p0.y))
 	{
 		if (line.p0.x > line.p1.x)
-		{
-			swap_nums(&line.p0.x, &line.p1.x);
-			swap_nums(&line.p0.y, &line.p1.y);
-		}
+			swap_line(&line);
 		line.dx = line.p1.x - line.p0.x;
 		line.dy = line.p1.y - line.p0.y;
 		draw_line_h(data, &line);
@@ -95,10 +92,7 @@ void	draw_line(t_data *data, t_line line)
 	else
 	{
 		if (line.p0.y > line.p1.y)
-		{
-			swap_nums(&line.p0.x, &line.p1.x);
-			swap_nums(&line.p0.y, &line.p1.y);
-		}
+			swap_line(&line);
 		line.dx = line.p1.x - line.p0.x;
 		line.dy = line.p1.y - line.p0.y;
 		draw_line_v(data, &line);
