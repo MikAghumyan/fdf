@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 18:50:21 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/08 13:00:05 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/09 20:04:30 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ void	initialize_data(t_data *data)
 	data->colors = NULL;
 	data->col_len = 0;
 	data->row_len = 0;
-	data->zoom = 50;
+	data->zoom = 53;
+	data->position_x = WINDOW_X / 2;
+	data->position_y = WINDOW_Y / 2;
 	data->img = NULL;
 	data->img_addr = NULL;
 	data->win = NULL;

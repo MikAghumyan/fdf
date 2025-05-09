@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/09 19:38:47 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/09 20:15:45 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@
 # define ESC_KEY 65307
 # define MINUS_KEY 65453
 # define PLUS_KEY 65451
+# define ARROW_UP_KEY 65362
+# define ARROW_DOWN_KEY 65364
+# define ARROW_LEFT_KEY 65361
+# define ARROW_RIGHT_KEY 65363
 
 typedef struct s_data
 {
@@ -37,6 +41,8 @@ typedef struct s_data
 	ssize_t			row_len;
 	ssize_t			col_len;
 	int				zoom;
+	int				position_x;
+	int				position_y;
 
 	void			*mlx;
 	void			*win;
@@ -77,6 +83,7 @@ t_coordinate_2d		get_isometric(t_data *data, int x, int y, int z);
 float				get_line_ratio(t_line *line);
 int					get_color(t_line *line);
 
+void				handle_move(int keycode, t_data *data);
 void				handle_error(char *err_msg, t_data *data, int fd);
 void				handle_exit(t_data *data, int fd);
 

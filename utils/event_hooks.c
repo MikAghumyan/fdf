@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:15:06 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/08 13:00:25 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/09 20:16:02 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,7 @@ int	key_hook(int keycode, t_data *data)
 	printf("%d pressed\n", keycode);
 	if (keycode == ESC_KEY)
 		handle_exit(data, -1);
-	if (keycode == PLUS_KEY)
-	{
-		data->zoom += 5;
-		initialize_image(data);
-	}
-	if (keycode == MINUS_KEY)
-	{
-		data->zoom -= 5;
-		initialize_image(data);
-	}
+	handle_move(keycode, data);
 	return (0);
 }
 

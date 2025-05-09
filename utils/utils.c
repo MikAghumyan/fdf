@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 16:18:09 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/09 19:46:39 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/09 20:05:54 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ t_coordinate_2d	get_isometric(t_data *data, int x, int y, int z)
 {
 	t_coordinate_2d	pos;
 
-	pos.x = ((x - y) * cos(0.523599)) * data->zoom + WINDOW_X / 2;
-	pos.y = ((x + y) * sin(0.523599) - z) * data->zoom + WINDOW_Y / 2;
+	pos.x = ((x - y) * cos(0.523599)) * data->zoom + data->position_x;
+	pos.y = ((x + y) * sin(0.523599) - z) * data->zoom + data->position_y;
 	pos.color = data->colors[y][x];
 	return (pos);
 }
