@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/09 20:52:12 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/11 17:15:37 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_data
 {
 	int		**matrix;
 	int		**colors;
+	int		def_color;
 	ssize_t	row_len;
 	ssize_t	col_len;
 	int		zoom;

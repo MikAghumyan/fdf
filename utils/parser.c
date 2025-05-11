@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:47:37 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/07 18:28:51 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/11 17:21:10 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,26 @@ void	free_matrix(void **matrix)
 	matrix = NULL;
 }
 
+static ssize_t	fill_point(t_data *data, int row_i, int col_i, char **nbr_strs)
+{
+	char	**point_data;
+
+	point_data = ft_split(nbr_strs[col_i], ',');
+	if (!point_data)
+		return (-1);
+	data->matrix[row_i][col_i] = ft_atoi(point_data[0]);
+	if (point_data[1])
+		data->colors[row_i][col_i] = ft_atoi_base(point_data[1] + 2, 16);
+	else
+		data->colors[row_i][col_i] = data->def_color;
+	free_matrix((void **)point_data);
+	return (0);
+}
+
 ssize_t	fill_line(t_data *data, int fd, int row_i)
 {
 	char	*line;
 	char	**nbr_strs;
-	char	**point_data;
 	ssize_t	i;
 
 	line = get_next_line(fd);
@@ -45,15 +60,8 @@ ssize_t	fill_line(t_data *data, int fd, int row_i)
 	i = 0;
 	while (i < data->row_len && nbr_strs[i])
 	{
-		point_data = ft_split(nbr_strs[i], ',');
-		if (!point_data)
-			return (free(line), free_matrix((void **)nbr_strs), -1);
-		data->matrix[row_i][i] = ft_atoi(point_data[0]);
-		if (point_data[1])
-			data->colors[row_i][i] = ft_atoi_base(point_data[1] + 2, 16);
-		else
-			data->colors[row_i][i] = 0x00AB78;
-		(free_matrix((void **)point_data), i++);
+		if (fill_point(data, row_i, i++, nbr_strs))
+			return (free_matrix((void **)nbr_strs), -1);
 	}
 	return (free(line), free_matrix((void **)nbr_strs), 0);
 }
