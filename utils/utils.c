@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 16:18:09 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/09 20:35:31 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/11 15:22:19 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_point	get_isometric(t_data *data, int x, int y, int z)
 	pos.color = data->colors[y][x];
 	return (pos);
 }
+
 float	get_line_ratio(t_line *line)
 {
 	float	ratio;
@@ -55,7 +56,7 @@ int	get_color(t_line *line)
 	float	ratio;
 	t_rgb	rgb0;
 	t_rgb	rgb1;
-	t_rgb	rgb_result;
+	t_rgb	result;
 
 	ratio = get_line_ratio(line);
 	rgb0.red = (line->p0.color >> 16) & 0xFF;
@@ -64,9 +65,23 @@ int	get_color(t_line *line)
 	rgb1.red = (line->p1.color >> 16) & 0xFF;
 	rgb1.green = (line->p1.color >> 8) & 0xFF;
 	rgb1.blue = line->p1.color & 0xFF;
-	rgb_result.red = (int)(rgb0.red + (rgb1.red - rgb0.red) * ratio);
-	rgb_result.green = (int)(rgb0.green + (rgb1.green - rgb0.green) * ratio);
-	rgb_result.blue = (int)(rgb0.blue + (rgb1.blue - rgb0.blue) * ratio);
-	line->m.color = (rgb_result.red << 16) | (rgb_result.green << 8) | rgb_result.blue;
+	result.red = (int)(rgb0.red + (rgb1.red - rgb0.red) * ratio);
+	result.green = (int)(rgb0.green + (rgb1.green - rgb0.green) * ratio);
+	result.blue = (int)(rgb0.blue + (rgb1.blue - rgb0.blue) * ratio);
+	line->m.color = (result.red << 16) | (result.green << 8) | result.blue;
 	return (line->m.color);
+}
+
+int	get_random_int(void)
+{
+	int	fd;
+	int	value;
+
+	fd = open("/dev/urandom", O_RDONLY);
+	value = 0;
+	if (fd < 0)
+		return (0);
+	read(fd, &value, sizeof(value));
+	close(fd);
+	return (value);
 }
