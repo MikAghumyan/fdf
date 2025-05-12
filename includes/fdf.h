@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/12 17:20:19 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:31:37 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@
 # endif
 # ifndef WINDOW_Y
 #  define WINDOW_Y 1080
+# endif
+# ifndef TRANSLATE
+#  define TRANSLATE 5
+# endif
+# ifndef SCALE
+#  define SCALE 53
 # endif
 
 # define ESC_KEY 65307
