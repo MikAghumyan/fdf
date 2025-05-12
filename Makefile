@@ -12,6 +12,7 @@ SRC =	main.c \
 		utils/event_hooks.c \
 		utils/drawer.c \
 		utils/utils.c \
+		utils/orthographic.c \
 
 OBJS = $(SRC:.c=.o)
 LIBFT= libft/libft.a
