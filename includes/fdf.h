@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/11 17:15:37 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/12 17:20:19 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@
 # define ARROW_DOWN_KEY 65364
 # define ARROW_LEFT_KEY 65361
 # define ARROW_RIGHT_KEY 65363
+# define T_KEY 116
+# define F_KEY 102
+# define S_KEY 115
+# define I_KEY 105
 
 typedef struct s_data
 {
@@ -48,6 +52,7 @@ typedef struct s_data
 	int		zoom;
 	int		position_x;
 	int		position_y;
+	int		ortho;
 
 	void	*mlx;
 	void	*win;
@@ -89,7 +94,11 @@ float		get_line_ratio(t_line *line);
 int			get_color(t_line *line);
 int			get_random_int(void);
 
+t_point		get_orthographic(t_data *data, int x, int y, int z);
+void		draw_orthographic(t_data *data);
+
 void		handle_move(int keycode, t_data *data);
+void		handle_view(int keycode, t_data *data);
 void		handle_error(char *err_msg, t_data *data, int fd);
 void		handle_exit(t_data *data, int fd);
 

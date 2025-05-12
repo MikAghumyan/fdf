@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 18:50:21 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/11 17:20:51 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/12 16:20:30 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	initialize_data(t_data *data)
 	data->matrix = NULL;
 	data->colors = NULL;
 	data->def_color = get_random_int();
+	data->ortho = 0;
 	data->col_len = 0;
 	data->row_len = 0;
 	data->zoom = 53;
@@ -37,7 +38,10 @@ void	initialize_image(t_data *data)
 		handle_error("image creation failed", data, -1);
 	data->img_addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,
 			&data->line_length, &data->endian);
-	draw_mesh(data);
+	if (data->ortho > 0 && data->ortho < 4)
+		draw_orthographic(data);
+	else
+		draw_mesh(data);
 }
 
 void	initialize_window(t_data *data)

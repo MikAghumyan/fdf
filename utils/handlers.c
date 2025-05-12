@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 19:04:34 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/11 15:23:01 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/12 16:31:41 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,19 @@ void	handle_move(int keycode, t_data *data)
 		data->position_x -= 5;
 	else if (keycode == ARROW_RIGHT_KEY)
 		data->position_x += 5;
+	initialize_image(data);
+}
+
+void	handle_view(int keycode, t_data *data)
+{
+	if (keycode == T_KEY)
+		data->ortho = 1;
+	else if (keycode == F_KEY)
+		data->ortho = 2;
+	else if (keycode == S_KEY)
+		data->ortho = 3;
+	else if (keycode == I_KEY)
+		data->ortho = 0;
 	initialize_image(data);
 }
 
