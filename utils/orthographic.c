@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:37:59 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/12 17:29:06 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:48:04 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ t_point	get_orthographic(t_data *data, int x, int y, int z)
 
 void	draw_orthographic(t_data *data)
 {
-	int i;
-	int j;
-	t_line line;
+	int		i;
+	int		j;
+	t_line	line;
 
 	i = -1;
 	while (data->matrix[++i])
