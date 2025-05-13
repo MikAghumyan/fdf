@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/12 19:31:37 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/13 14:25:21 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ typedef struct s_data
 	int		zoom;
 	int		position_x;
 	int		position_y;
+	int		alpha;
+	int		tetha;
+	int		gamma;
 	int		ortho;
 
 	void	*mlx;
@@ -102,6 +105,10 @@ int			get_random_int(void);
 
 t_point		get_orthographic(t_data *data, int x, int y, int z);
 void		draw_orthographic(t_data *data);
+
+void		rotate_z(t_data *data, int *x, int *y);
+void		rotate_y(t_data *data, int *x, int *z);
+void		rotate_x(t_data *data, int *y, int *z);
 
 void		handle_move(int keycode, t_data *data);
 void		handle_view(int keycode, t_data *data);

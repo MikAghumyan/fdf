@@ -13,6 +13,7 @@ SRC =	main.c \
 		utils/drawer.c \
 		utils/utils.c \
 		utils/orthographic.c \
+		utils/rotation.c \
 
 OBJS = $(SRC:.c=.o)
 LIBFT= libft/libft.a
