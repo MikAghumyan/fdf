@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 18:19:37 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/09 19:48:43 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/13 13:56:33 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ int	main(int argc, char **argv)
 	make_matrix(&data, argv[1]);
 	initialize_window(&data);
 	mlx_loop(data.mlx);
-	free_matrix((void **)data.matrix);
+	handle_exit(&data, -1);
 	return (0);
 }
