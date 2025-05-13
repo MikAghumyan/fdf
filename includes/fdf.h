@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/14 00:03:21 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/14 00:39:27 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct s_point
 {
 	int		x;
 	int		y;
+	int		z;
 	int		color;
 }			t_point;
 
