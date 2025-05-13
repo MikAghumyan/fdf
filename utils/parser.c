@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:47:37 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/12 18:00:12 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/14 00:17:12 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,13 @@ static ssize_t	fill_point(t_data *data, int row_i, int col_i, char **nbr_strs)
 		return (-1);
 	data->matrix[row_i][col_i] = ft_atoi(point_data[0]);
 	if (point_data[1])
+	{
 		data->colors[row_i][col_i] = ft_atoi_base(point_data[1] + 2, 16);
+		if (data->colors[row_i][col_i] < data->z_min)
+			data->z_min = data->colors[row_i][col_i];
+		else if (data->colors[row_i][col_i] > data->z_max)
+			data->z_max = data->colors[row_i][col_i];
+	}
 	else
 		data->colors[row_i][col_i] = data->def_color
 			+ data->matrix[row_i][col_i] * 500;

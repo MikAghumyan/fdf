@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/13 16:27:08 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/14 00:03:21 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ typedef struct s_data
 	int		zoom;
 	int		position_x;
 	int		position_y;
+	int		z_max;
+	int		z_min;
 	float	alpha;
 	float	tetha;
 	float	gamma;
