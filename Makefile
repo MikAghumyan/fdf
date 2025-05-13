@@ -14,6 +14,7 @@ SRC =	main.c \
 		utils/utils.c \
 		utils/orthographic.c \
 		utils/rotation.c \
+		utils/event_handlers.c\
 
 OBJS = $(SRC:.c=.o)
 LIBFT= libft/libft.a

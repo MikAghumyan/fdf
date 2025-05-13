@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:15:06 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/13 15:03:52 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/13 17:43:30 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	key_hook(int keycode, t_data *data)
 	handle_move(keycode, data);
 	handle_view(keycode, data);
 	handle_rotation(keycode, data);
+	handle_transform(keycode, data);
 	return (0);
 }
 

@@ -53,6 +53,8 @@
 # define S_KEY 115
 # define Q_KEY 113
 # define E_KEY 101
+# define Z_KEY 122
+# define X_KEY 120
 
 typedef struct s_data
 {
@@ -119,6 +121,7 @@ void		rotate_x(t_data *data, int *y, int *z);
 void		handle_move(int keycode, t_data *data);
 void		handle_view(int keycode, t_data *data);
 void		handle_rotation(int keycode, t_data *data);
+void		handle_transform(int keycode, t_data *data);
 void		handle_error(char *err_msg, t_data *data, int fd);
 void		handle_exit(t_data *data, int fd);
 
