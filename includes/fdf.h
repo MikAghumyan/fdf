@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/13 14:25:21 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/13 16:27:08 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,16 @@
 # define ARROW_DOWN_KEY 65364
 # define ARROW_LEFT_KEY 65361
 # define ARROW_RIGHT_KEY 65363
-# define T_KEY 116
-# define F_KEY 102
+# define KEY_2 50
+# define KEY_3 51
+# define KEY_4 52
+# define KEY_1 49
+# define A_KEY 97
+# define D_KEY 100
+# define W_KEY 119
 # define S_KEY 115
-# define I_KEY 105
+# define Q_KEY 113
+# define E_KEY 101
 
 typedef struct s_data
 {
@@ -58,9 +64,9 @@ typedef struct s_data
 	int		zoom;
 	int		position_x;
 	int		position_y;
-	int		alpha;
-	int		tetha;
-	int		gamma;
+	float	alpha;
+	float	tetha;
+	float	gamma;
 	int		ortho;
 
 	void	*mlx;
@@ -112,6 +118,7 @@ void		rotate_x(t_data *data, int *y, int *z);
 
 void		handle_move(int keycode, t_data *data);
 void		handle_view(int keycode, t_data *data);
+void		handle_rotation(int keycode, t_data *data);
 void		handle_error(char *err_msg, t_data *data, int fd);
 void		handle_exit(t_data *data, int fd);
 

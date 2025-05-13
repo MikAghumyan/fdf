@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 16:18:09 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/13 14:27:47 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/13 16:33:52 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ t_point	get_isometric(t_data *data, int x, int y, int z)
 {
 	t_point	pos;
 
+	pos.color = data->colors[y][x];
 	rotate_x(data, &y, &z);
 	rotate_y(data, &x, &z);
 	rotate_z(data, &x, &y);
 	pos.x = ((x - y) * cos(0.523599)) * data->zoom + data->position_x;
 	pos.y = ((x + y) * sin(0.523599) - z) * data->zoom + data->position_y;
-	pos.color = data->colors[y][x];
 	return (pos);
 }
 
