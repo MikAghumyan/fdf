@@ -59,7 +59,12 @@ void	handle_view(int keycode, t_data *data)
 	else if (keycode == KEY_4)
 		data->ortho = 3;
 	else if (keycode == KEY_1)
+	{
 		data->ortho = 0;
+		data->alpha = 0;
+		data->tetha = 0;
+		data->gamma = 0;
+	}
 	else
 		handled = 0;
 	if (handled)
