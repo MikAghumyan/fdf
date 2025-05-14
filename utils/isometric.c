@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 09:58:52 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/14 10:46:35 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/14 13:20:33 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,13 @@ t_point	get_isometric(t_data *data, int x, int y, int z)
 	rotate_x(data, &y, &z, center);
 	rotate_y(data, &x, &z, center);
 	rotate_z(data, &x, &y, center);
-	pixel_put_image(data, center.x, center.y, 0xFFFFFF);
-	pos.x = ((x - y - (center.x - center.y)) * cos(0.523599))
-		+ data->position_x;
-	pos.y = ((x + y - (center.x + center.y)) * sin(0.523599) - z)
-		+ data->position_y;
+	rotate_x(data, &center.y, &center.z, center);
+	rotate_y(data, &center.x, &center.z, center);
+	rotate_z(data, &center.x, &center.y, center);
+	x -= center.x;
+	y -= center.y;
+	z -= center.z;
+	pos.x = ((x - y) * cos(0.523599)) + data->position_x;
+	pos.y = ((x + y) * sin(0.523599) - z) + data->position_y;
 	return (pos);
 }
