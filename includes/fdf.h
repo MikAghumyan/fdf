@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/14 10:22:43 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/14 17:12:55 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@
 # endif
 
 # define ESC_KEY 65307
-# define MINUS_KEY 65453
-# define PLUS_KEY 65451
+# define MINUS_KEY 45
+# define PLUS_KEY 61
+# define MINUS_NUM_KEY 65453
+# define PLUS_NUM_KEY 65451
 # define ARROW_UP_KEY 65362
 # define ARROW_DOWN_KEY 65364
 # define ARROW_LEFT_KEY 65361
@@ -114,7 +116,7 @@ float		get_line_ratio(t_line *line);
 int			get_color(t_line *line);
 int			get_random_int(void);
 
-t_point		get_orthographic(t_data *data, int x, int y, int z);
+t_point		get_ortho(t_data *data, int x, int y, int z);
 void		draw_orthographic(t_data *data);
 
 t_point		get_isometric(t_data *data, int x, int y, int z);

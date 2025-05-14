@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   event_handlers.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/14 17:09:02 by maghumya          #+#    #+#             */
+/*   Updated: 2025/05/14 17:12:17 by maghumya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/fdf.h"
 
 void	handle_move(int keycode, t_data *data)
@@ -5,9 +17,9 @@ void	handle_move(int keycode, t_data *data)
 	int	handled;
 
 	handled = 1;
-	if (keycode == PLUS_KEY)
+	if (keycode == PLUS_KEY || keycode == PLUS_NUM_KEY)
 		data->zoom += TRANSLATE;
-	else if (keycode == MINUS_KEY)
+	else if (keycode == MINUS_KEY || keycode == MINUS_NUM_KEY)
 		data->zoom -= TRANSLATE;
 	else if (keycode == ARROW_UP_KEY)
 		data->position_y -= TRANSLATE;
@@ -22,6 +34,7 @@ void	handle_move(int keycode, t_data *data)
 	if (handled)
 		initialize_image(data);
 }
+
 void	handle_transform(int keycode, t_data *data)
 {
 	int	handled;
@@ -36,12 +49,14 @@ void	handle_transform(int keycode, t_data *data)
 		{
 			j = -1;
 			while (++j < data->row_len)
+			{
 				if (data->matrix[i][j])
 				{
 					data->matrix[i][j] += handled;
 					if (!data->matrix[i][j])
 						data->matrix[i][j] += handled;
 				}
+			}
 		}
 		initialize_image(data);
 	}
@@ -73,7 +88,7 @@ void	handle_view(int keycode, t_data *data)
 
 void	handle_rotation(int keycode, t_data *data)
 {
-	int handled;
+	int	handled;
 
 	handled = 1;
 	if (keycode == A_KEY)

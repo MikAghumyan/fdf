@@ -6,13 +6,13 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:37:59 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/14 13:23:47 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/14 17:12:57 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-t_point	get_orthographic(t_data *data, int x, int y, int z)
+t_point	get_ortho(t_data *data, int x, int y, int z)
 {
 	t_point	pos;
 	t_point	center;
@@ -49,17 +49,15 @@ void	draw_orthographic(t_data *data)
 		j = -1;
 		while (++j < data->row_len)
 		{
-			line.p0 = get_orthographic(data, j, i, data->matrix[i][j]);
+			line.p0 = get_ortho(data, j, i, data->matrix[i][j]);
 			if (j + 1 < data->row_len)
 			{
-				line.p1 = get_orthographic(data, j + 1, i, data->matrix[i][j
-						+ 1]);
+				line.p1 = get_ortho(data, j + 1, i, data->matrix[i][j + 1]);
 				draw_line(data, line);
 			}
 			if (i + 1 < data->col_len)
 			{
-				line.p1 = get_orthographic(data, j, i + 1, data->matrix[i
-						+ 1][j]);
+				line.p1 = get_ortho(data, j, i + 1, data->matrix[i + 1][j]);
 				draw_line(data, line);
 			}
 		}
