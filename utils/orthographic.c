@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:37:59 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/12 19:48:04 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/14 13:23:47 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,23 @@
 t_point	get_orthographic(t_data *data, int x, int y, int z)
 {
 	t_point	pos;
+	t_point	center;
 
+	center = get_center_point(data);
 	if (data->ortho == 1)
 	{
-		pos.x = x * data->zoom + data->position_x;
-		pos.y = y * data->zoom + data->position_y;
+		pos.x = x * data->zoom + data->position_x - center.x;
+		pos.y = y * data->zoom + data->position_y - center.y;
 	}
 	else if (data->ortho == 2)
 	{
-		pos.x = x * data->zoom + data->position_x;
-		pos.y = -z * data->zoom + data->position_y;
+		pos.x = x * data->zoom + data->position_x - center.x;
+		pos.y = -z * data->zoom + data->position_y + center.z;
 	}
 	else if (data->ortho == 3)
 	{
-		pos.x = y * data->zoom + data->position_x;
-		pos.y = -z * data->zoom + data->position_y;
+		pos.x = y * data->zoom + data->position_x - center.y;
+		pos.y = -z * data->zoom + data->position_y + center.z;
 	}
 	pos.color = data->colors[y][x];
 	return (pos);
