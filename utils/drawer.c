@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 17:00:58 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/09 19:22:57 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/14 09:59:34 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,32 +95,4 @@ void	draw_line(t_data *data, t_line line)
 		line.dx *= line.dir;
 		draw_line_v(data, &line);
 	}
-}
-
-void	draw_mesh(t_data *data)
-{
-	int		i;
-	int		j;
-	t_line	line;
-
-	i = -1;
-	while (data->matrix[++i])
-	{
-		j = -1;
-		while (++j < data->row_len)
-		{
-			line.p0 = get_isometric(data, j, i, data->matrix[i][j]);
-			if (j + 1 < data->row_len)
-			{
-				line.p1 = get_isometric(data, j + 1, i, data->matrix[i][j + 1]);
-				draw_line(data, line);
-			}
-			if (i + 1 < data->col_len)
-			{
-				line.p1 = get_isometric(data, j, i + 1, data->matrix[i + 1][j]);
-				draw_line(data, line);
-			}
-		}
-	}
-	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 }

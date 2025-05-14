@@ -13,6 +13,7 @@ SRC =	main.c \
 		utils/drawer.c \
 		utils/utils.c \
 		utils/orthographic.c \
+		utils/isometric.c \
 		utils/rotation.c \
 		utils/event_handlers.c\
 

@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 18:50:21 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/14 00:03:50 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/14 10:01:29 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	initialize_image(t_data *data)
 	if (data->ortho > 0 && data->ortho < 4)
 		draw_orthographic(data);
 	else
-		draw_mesh(data);
+		draw_isometric(data);
 }
 
 void	initialize_window(t_data *data)

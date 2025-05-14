@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 16:18:09 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/13 19:18:07 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/14 09:59:46 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,6 @@ void	swap_line(t_line *line)
 	tmp = line->p0;
 	line->p0 = line->p1;
 	line->p1 = tmp;
-}
-
-t_point	get_isometric(t_data *data, int x, int y, int z)
-{
-	t_point	pos;
-
-	pos.color = data->colors[y][x];
-	x *= data->zoom;
-	y *= data->zoom;
-	z *= data->zoom;
-	rotate_x(data, &y, &z);
-	rotate_y(data, &x, &z);
-	rotate_z(data, &x, &y);
-	pos.x = ((x - y) * cos(0.523599)) + data->position_x;
-	pos.y = ((x + y) * sin(0.523599) - z) + data->position_y;
-	return (pos);
 }
 
 float	get_line_ratio(t_line *line)

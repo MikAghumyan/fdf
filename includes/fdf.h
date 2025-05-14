@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/14 00:39:27 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/14 10:03:34 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,13 +109,15 @@ typedef struct s_rgb
 }			t_rgb;
 
 void		swap_line(t_line *line);
-t_point		get_isometric(t_data *data, int x, int y, int z);
 float		get_line_ratio(t_line *line);
 int			get_color(t_line *line);
 int			get_random_int(void);
 
 t_point		get_orthographic(t_data *data, int x, int y, int z);
 void		draw_orthographic(t_data *data);
+
+t_point		get_isometric(t_data *data, int x, int y, int z);
+void		draw_isometric(t_data *data);
 
 void		rotate_z(t_data *data, int *x, int *y);
 void		rotate_y(t_data *data, int *x, int *z);
@@ -141,7 +143,6 @@ void		free_window(t_data *data);
 
 void		pixel_put_image(t_data *data, int x, int y, int color);
 void		draw_line(t_data *data, t_line line);
-void		draw_mesh(t_data *data);
 
 void		free_matrix(void **matrix);
 ssize_t		fill_line(t_data *data, int fd, int row_i);
