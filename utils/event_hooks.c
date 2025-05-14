@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:15:06 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/13 17:43:30 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/14 16:02:08 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	key_hook(int keycode, t_data *data)
 {
-	printf("%d pressed\n", keycode);
 	if (keycode == ESC_KEY)
 		handle_exit(data, -1);
 	handle_move(keycode, data);

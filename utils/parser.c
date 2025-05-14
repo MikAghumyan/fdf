@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:47:37 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/14 00:48:41 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/14 16:02:16 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static ssize_t	fill_point(t_data *data, int row_i, int col_i, char **nbr_strs)
 		data->colors[row_i][col_i] = data->def_color
 			+ data->matrix[row_i][col_i] * 500;
 	free_matrix((void **)point_data);
-	printf("z_min: %d \t z_max: %d", data->z_min, data->z_max);
 	return (0);
 }
 
