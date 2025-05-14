@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:43:43 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/14 10:03:34 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/14 10:22:43 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ typedef struct s_rgb
 }			t_rgb;
 
 void		swap_line(t_line *line);
+t_point		get_center_point(t_data *data);
 float		get_line_ratio(t_line *line);
 int			get_color(t_line *line);
 int			get_random_int(void);
@@ -119,9 +120,9 @@ void		draw_orthographic(t_data *data);
 t_point		get_isometric(t_data *data, int x, int y, int z);
 void		draw_isometric(t_data *data);
 
-void		rotate_z(t_data *data, int *x, int *y);
-void		rotate_y(t_data *data, int *x, int *z);
-void		rotate_x(t_data *data, int *y, int *z);
+void		rotate_z(t_data *data, int *x, int *y, t_point cetner);
+void		rotate_y(t_data *data, int *x, int *z, t_point cetner);
+void		rotate_x(t_data *data, int *y, int *z, t_point cetner);
 
 void		handle_move(int keycode, t_data *data);
 void		handle_view(int keycode, t_data *data);

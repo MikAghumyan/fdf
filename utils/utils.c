@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 16:18:09 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/14 09:59:46 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/14 10:15:32 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@ void	swap_line(t_line *line)
 	tmp = line->p0;
 	line->p0 = line->p1;
 	line->p1 = tmp;
+}
+
+t_point	get_center_point(t_data *data)
+{
+	t_point	center;
+
+	center.x = ((data->row_len - 1) / 2) * data->zoom;
+	center.y = ((data->col_len - 1) / 2) * data->zoom;
+	center.z = ((data->z_max + data->z_min) / 2) * data->zoom;
+	return (center);
 }
 
 float	get_line_ratio(t_line *line)

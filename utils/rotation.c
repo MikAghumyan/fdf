@@ -6,20 +6,17 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:14:15 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/14 00:50:39 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/14 10:22:03 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	rotate_z(t_data *data, int *x, int *y)
+void	rotate_z(t_data *data, int *x, int *y, t_point center)
 {
 	t_point	tmp;
 	t_point	rotated;
-	t_point	center;
 
-	center.x = ((data->row_len - 1) / 2) * data->zoom;
-	center.y = ((data->col_len - 1) / 2) * data->zoom;
 	tmp.x = *x - center.x;
 	tmp.y = *y - center.y;
 	rotated.x = tmp.x * cos(data->gamma) - tmp.y * sin(data->gamma);
@@ -28,14 +25,11 @@ void	rotate_z(t_data *data, int *x, int *y)
 	*y = rotated.y + center.y;
 }
 
-void	rotate_y(t_data *data, int *x, int *z)
+void	rotate_y(t_data *data, int *x, int *z, t_point center)
 {
 	t_point	tmp;
 	t_point	rotated;
-	t_point	center;
 
-	center.x = ((data->row_len - 1) / 2) * data->zoom;
-	center.z = ((data->z_max + data->z_min) / 2) * data->zoom;
 	tmp.x = *x - center.x;
 	tmp.z = *z - center.z;
 	rotated.x = tmp.x * cos(data->tetha) + tmp.z * sin(data->tetha);
@@ -44,14 +38,11 @@ void	rotate_y(t_data *data, int *x, int *z)
 	*z = rotated.z + center.z;
 }
 
-void	rotate_x(t_data *data, int *y, int *z)
+void	rotate_x(t_data *data, int *y, int *z, t_point center)
 {
 	t_point	tmp;
 	t_point	rotated;
-	t_point	center;
 
-	center.y = ((data->col_len - 1) / 2) * data->zoom;
-	center.z = ((data->z_max + data->z_min) / 2) * data->zoom;
 	tmp.y = *y - center.y;
 	tmp.z = *z - center.z;
 	rotated.y = tmp.y * cos(data->alpha) - tmp.z * sin(data->alpha);

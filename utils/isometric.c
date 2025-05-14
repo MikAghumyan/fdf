@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 09:58:52 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/14 10:00:03 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/14 10:46:35 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,20 @@ void	draw_isometric(t_data *data)
 t_point	get_isometric(t_data *data, int x, int y, int z)
 {
 	t_point	pos;
+	t_point	center;
 
 	pos.color = data->colors[y][x];
 	x *= data->zoom;
 	y *= data->zoom;
 	z *= data->zoom;
-	rotate_x(data, &y, &z);
-	rotate_y(data, &x, &z);
-	rotate_z(data, &x, &y);
-	pos.x = ((x - y) * cos(0.523599)) + data->position_x;
-	pos.y = ((x + y) * sin(0.523599) - z) + data->position_y;
+	center = get_center_point(data);
+	rotate_x(data, &y, &z, center);
+	rotate_y(data, &x, &z, center);
+	rotate_z(data, &x, &y, center);
+	pixel_put_image(data, center.x, center.y, 0xFFFFFF);
+	pos.x = ((x - y - (center.x - center.y)) * cos(0.523599))
+		+ data->position_x;
+	pos.y = ((x + y - (center.x + center.y)) * sin(0.523599) - z)
+		+ data->position_y;
 	return (pos);
 }
