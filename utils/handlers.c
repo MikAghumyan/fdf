@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 19:04:34 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/13 17:56:14 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/14 16:41:56 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	handle_error(char *err_msg, t_data *data, int fd)
 		free_matrix((void **)data->colors);
 		free_window(data);
 	}
+	get_next_line(-1);
 	if (fd >= 0)
 		close(fd);
 	ft_putstr_fd("fdf: ", 2);
@@ -37,6 +38,7 @@ void	handle_exit(t_data *data, int fd)
 		free_matrix((void **)data->colors);
 		free_window(data);
 	}
+	get_next_line(-1);
 	if (fd >= 0)
 		close(fd);
 	ft_putendl_fd("fdf: program exited successfully", 1);

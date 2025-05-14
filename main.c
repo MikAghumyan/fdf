@@ -6,7 +6,7 @@
 /*   By: maghumya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 18:19:37 by maghumya          #+#    #+#             */
-/*   Updated: 2025/05/13 13:56:33 by maghumya         ###   ########.fr       */
+/*   Updated: 2025/05/14 16:45:42 by maghumya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	}
 	initialize_data(&data);
 	if (validate_file(&data, argv[1]) <= 0)
-		return (ft_putstr_fd("fdf: invalid map \n", 2), 1);
+		handle_error("fdf: invalid map \n", &data, -1);
 	make_matrix(&data, argv[1]);
 	initialize_window(&data);
 	mlx_loop(data.mlx);
