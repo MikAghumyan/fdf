@@ -1,6 +1,7 @@
 # FDF (Fil de Fer) - Wireframe Renderer
 
 [MiniLibX]:[https://github.com/42paris/[MiniLibX]-linux]
+[42school]:[https://github.com/42school]
 
 <details>
 <summary>Table of Contents</summary>
@@ -20,12 +21,7 @@
 
 ## Overview
 
-FDF (Fil de Fer, or "Wireframe") is a graphical project developed in C as part of the 42 school curriculum. This program visualizes 3D wireframe models from 2D coordinate maps using the [MiniLibX] library. It reads a `.fdf` file containing X, Y, and Z coordinates, where Z represents height, and renders an isometric or orthograpgic projection of the terrain as a wireframe mesh. The project focuses on graphics programming, matrix transformations, and event-driven programming.
-
-<video width="640" height="360" controls>
-  <source src="media/Screencast.webm" type="video/webm">
-  Your browser does not support the video tag.
-</video>
+FDF (Fil de Fer, or "Wireframe") is a graphical project developed in C as part of the [42 school][42school] curriculum. This program visualizes 3D wireframe models from 2D coordinate maps using the [MiniLibX] library. It reads a `.fdf` file containing X, Y, and Z coordinates, where Z represents height, and renders an isometric or orthograpgic projection of the terrain as a wireframe mesh. The project focuses on graphics programming, matrix transformations, and event-driven programming.
 
 ## Features
 
@@ -148,7 +144,7 @@ Before compiling and running the project, ensure you have the following:
 
 ## Acknowledgments
 
-- **42 School**: For providing the project framework and resources.
+- **[42 School][42school]**: For providing the project framework and resources.
 - **[MiniLibX]**: For the lightweight graphics library used in rendering.
 - **Community**: Thanks to peers for providing assistance and sharing knowledge.
-<a href="42school"><img src="https://github.com/42school.png?size=40" alt="@42school" width="40" height="40" style="border-radius:50%;"></a> <a href="42paris"><img src="https://github.com/42paris.png?size=40" alt="@42paris" width="40" height="40" style="border-radius:50%;"></a> <a href="RubBarkhudaryan"><img src="https://github.com/RubBarkhudaryan.png?size=40" alt="@RubBarkhudaryan" width="40" height="40" style="border-radius:50%;"></a> <a href="https://github.com/Vruyr587"><img src="https://github.com/Vruyr587.png?size=40" alt="@Vruyr587" width="40" height="40" style="border-radius:50%;"></a> <a href="https://github.com/Davhak2"><img src="https://github.com/Davhak2.png?size=40" alt="@Davhak2" width="40" height="40" style="border-radius:50%;"></a> 
+  [@42school](https://github.com/42school) [@42paris](https://github.com/42paris) [@RubBarkhudaryan](https://github.com/RubBarkhudaryan) [@Vruyr587](https://github.com/Vruyr587) [@Davhak2](https://github.com/Davhak2)
