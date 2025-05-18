@@ -35,6 +35,7 @@ FDF (Fil de Fer, or "Wireframe") is a graphical project developed in C as part o
 
 ## Demo
 
+<video src="media/Screencast.mp4" controls></video>
 ![Isometric Projection](media/Screenshot1.png)
 ![Isometric Projection](media/Screenshot3.png)
 ![Top Projection](media/Screenshot4.png)
